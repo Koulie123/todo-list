@@ -1,4 +1,5 @@
 import Todo from './todo.js';
+import displayTodos from './displayTodos.js';
 
 class TodoList {
     constructor() {
@@ -16,19 +17,36 @@ class TodoList {
 }
 
 function createTodoButton (mainList) {
-    let title = document.querySelector('#todo-title').value;
-    let dueDate = document.querySelector('#todo-due-date').value;
-    console.log(dueDate);
-    let priority = document.querySelector('#todo-priority').value;
-    let project = document.querySelector('#todo-project').value;
-    let description = document.querySelector('#todo-description').value;
-    let notes = document.querySelector('#todo-notes').value;
-    console.log(title);
+    let titleInput = document.querySelector('#todo-title');
 
+    if (titleInput.value != '') {
+            let title = titleInput.value;
+            titleInput.value = '';
+            let dueDateInput = document.querySelector('#todo-due-date');
+            let dueDate = dueDateInput.value;
+            dueDateInput.value = '';
+            console.log(dueDate);
+            let priorityInput = document.querySelector('#todo-priority');
+            let priority = priorityInput.value;
+            priorityInput.selectedIndex = 0;
 
+            let projectInput = document.querySelector('#todo-project');
+            let project = projectInput.value;
+            projectInput.selectedIndex = 0;
+            let descriptionInput = document.querySelector('#todo-description');
+            let description = descriptionInput.value;
+            descriptionInput = '';
+            let notesInput = document.querySelector('#todo-notes');
+            let notes = notesInput.value;
+            notesInput.value = '';
+            console.log(title);
+        
+        
+        
+        
+            mainList.addTodo(title, dueDate, priority, project, description, notes);
+    }
 
-
-    mainList.addTodo(title, dueDate, priority, project, description, notes);
 }
 
 export {TodoList, createTodoButton}

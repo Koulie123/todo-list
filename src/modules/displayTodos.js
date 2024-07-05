@@ -15,7 +15,9 @@ import todoList from "./todoList";
 // }
 
 export default function (list, parent) {
-    
+    while (parent.firstChild) {
+        parent.firstChild.remove();
+    }
     list.forEach(element => {
         let newRow = document.createElement('tr');
         let title = document.createElement('td');

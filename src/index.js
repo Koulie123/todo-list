@@ -11,19 +11,20 @@ mainList.addTodo("world", "another desc", "july", "high", "more notes");
 
 const centerContainer = document.querySelector('.todos-container');
 const todoButton = document.querySelector('#all-todos');
-const tableContainer = document.querySelector('#todo-table')
+const tableBody = document.querySelector('#table-body')
 const submitButton = document.querySelector('#create-todo');
 submitButton.addEventListener('click', () => {
     console.log("todoButton clicked");
     createTodoButton(mainList);
     console.log(mainList);
+    displayTodos(mainList.getAllTodos(), tableBody);
 })
 
 
 
 todoButton.addEventListener('click', () => {
     console.log("Button clicked");
-    displayTodos(mainList.getAllTodos(), tableContainer)
+    displayTodos(mainList.getAllTodos(), tableBody)
 });
 
 const homeButton = document.querySelector('#home');

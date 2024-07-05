@@ -1,3 +1,3 @@
 export default function (parent){
-    parent.innerHTML = '';
+    parent.innerHTML ='';
 }
