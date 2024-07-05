@@ -17,34 +17,42 @@
                 <!-- <form action="#" method="#" id="todo-creation"> -->
                     <div class="form-div" id="todo-creation">
                         <div class="form-input-section title">
-                            <label for="todo-title">*Title:</label>
-                            <input type="text" name="title" id="todo-title" required>
+                            <span>
+                                <label for="todo-title">*Title:</label>
+                                <input type="text" name="title" id="todo-title" required>
+                            </span>
                         </div>
                         <div class="form-input-section due-date">
-                            <label for="todo-due-date">Due Date: </label>
-                            <input type="date" name="due-date" id="todo-due-date">
+                            <span>
+                                <label for="todo-due-date">Due Date: </label>
+                                <input type="date" name="due-date" id="todo-due-date">
+                            </span>
                         </div>
                         <div class="form-input-section priority">
-                            <label for="todo-priority">Priority</label>
-                            <select name="priority" id="todo-priority">
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
-                            </select>
+                            <span>
+                                <label for="todo-priority">Priority:</label>
+                                <select name="priority" id="todo-priority">
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </span>
                         </div>
                         <div class="form-input-section project">
-                            <label for="todo-priority">Project</label>
-                            <select name="project" id="todo-project">
-                                <option value="example1">Example1</option>
-                                <option value="example2">Example2</option>
-                            </select>
+                            <span>
+                                <label for="todo-priority">Project: </label>
+                                <select name="project" id="todo-project">
+                                    <option value="example1">Example1</option>
+                                    <option value="example2">Example2</option>
+                                </select>
+                            </span>
                         </div>
                         <div class="form-input-section description">
-                            <label for="todo-description">Description</label>
+                            <label for="todo-description">Description:</label>
                             <textarea name="description" id="todo-description"></textarea>
                         </div>
                         <div class="form-input-section notes">
-                            <label for="todo-notes">Notes</label>
+                            <label for="todo-notes">Notes:</label>
                             <textarea name="notes" id="todo-notes"></textarea>
                         </div>
                         <button type="submit" id="create-todo">Create Todo</button>

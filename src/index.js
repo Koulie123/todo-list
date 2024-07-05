@@ -6,8 +6,7 @@ import displayTodos from './modules/displayTodos.js';
 
 let mainList = new TodoList();
 
-mainList.addTodo("hello", "desc", "june", "low", "notes");
-mainList.addTodo("world", "another desc", "july", "high", "more notes");
+
 
 const centerContainer = document.querySelector('.todos-container');
 const todoButton = document.querySelector('#all-todos');
