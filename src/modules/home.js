@@ -1,3 +1,4 @@
 export default function (parent){
-    parent.innerHTML ='';
+    const table = document.querySelector('.todos-container')
+    table.classList.add('no-display');
 }

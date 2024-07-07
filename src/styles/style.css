@@ -3,6 +3,7 @@
     --sky-3: #7dd3fc;
     --sky-2: #bae6fd;
     --sky-1: #e0f2fe;
+    --sky-05: #f0f9ff;
     --sky-95: #082f49;
 
 }
@@ -83,6 +84,9 @@ fieldset {
 .todos-container {
     margin: 1rem;
 }
+.no-display {
+    display: none;
+}
 table {
     width: 100%;
 }
@@ -92,7 +96,9 @@ table, td, th {
     padding: 0px;
     margin: 0px;
 }
-
+.todo-row:hover {
+    background-color: var(--sky-05);
+}
 .footer {
     display: flex;
     justify-content: center;

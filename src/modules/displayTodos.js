@@ -15,6 +15,13 @@ import todoList from "./todoList";
 // }
 
 export default function (list, parent) {
+    const table = document.querySelector('.todos-container')
+
+    if (table.classList.contains('no-display')){
+        table.classList.remove('no-display');
+    }
+    table.classList.remove('no-display');
+
     while (parent.firstChild) {
         parent.firstChild.remove();
     }
@@ -32,7 +39,9 @@ export default function (list, parent) {
         let project = document.createElement('td');
         project.textContent = element.project;
         newRow.appendChild(project);
+        newRow.classList.add('todo-row');
         
         parent.appendChild(newRow);
+
     });
 }
