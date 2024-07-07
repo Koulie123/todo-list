@@ -14,13 +14,20 @@
 }
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     background-color: var(--sky-4);
     min-height: 40px;
 }
 header > div {
     flex: 1;
-    max-width: 250px;
+    width: clamp(250px, 300px, 350px);
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+header > div > button {
+    width: 50%;
 }
 .main-container {
     display: grid;
