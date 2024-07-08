@@ -6,7 +6,7 @@ import displayTodos from './modules/displayTodos.js';
 
 let mainList = new TodoList();
 
-
+let globalId = 0;
 
 const centerContainer = document.querySelector('.todos-container');
 const todoButton = document.querySelector('#all-todos');
@@ -17,6 +17,7 @@ submitButton.addEventListener('click', () => {
     createTodoButton(mainList);
     console.log(mainList);
     displayTodos(mainList.getAllTodos(), tableBody);
+    globalId ++;
 })
 
 
@@ -28,3 +29,8 @@ todoButton.addEventListener('click', () => {
 
 const homeButton = document.querySelector('#home');
 homeButton.addEventListener('click', () => home(centerContainer));
+
+
+
+
+

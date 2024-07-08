@@ -40,6 +40,10 @@ export default function (list, parent) {
         project.textContent = element.project;
         newRow.appendChild(project);
         newRow.classList.add('todo-row');
+        let deleteButton = document.createElement('button');
+        deleteButton.textContent = "Delete";
+        newRow.appendChild(deleteButton);
+
         
         parent.appendChild(newRow);
 
