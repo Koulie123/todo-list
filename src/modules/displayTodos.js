@@ -14,7 +14,8 @@ import todoList from "./todoList";
 //     });
 // }
 
-export default function (list, parent) {
+export default function (todoListObject, parent) {
+    let list = todoListObject.getAllTodos();
     const table = document.querySelector('.todos-container')
 
     if (table.classList.contains('no-display')){
@@ -42,6 +43,8 @@ export default function (list, parent) {
         newRow.classList.add('todo-row');
         let deleteButton = document.createElement('button');
         deleteButton.textContent = "Delete";
+        console.log(element.id);
+        deleteButton.id = element.id;
         newRow.appendChild(deleteButton);
 
         

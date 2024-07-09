@@ -5,10 +5,13 @@ class TodoList {
     constructor() {
         this.todos = [];
     }
-    addTodo(name, dueDate, priority,  project, description, notes) {
-        const newTodo = new Todo(name, dueDate, priority, project, description, notes);
+    addTodo(name, dueDate, priority,  project, description, notes, id) {
+        const newTodo = new Todo(name, dueDate, priority, project, description, notes, id);
         this.todos.push(newTodo);
 
+    }
+    removeTodoById(id){
+        this.todos = this.todos.filter((element) => element.id !== id);
     }
 
     getAllTodos() {
@@ -16,7 +19,8 @@ class TodoList {
     }
 }
 
-function createTodoButton (mainList) {
+function createTodoButton (todoListObject, id) {
+    let mainList = todoListObject
     let titleInput = document.querySelector('#todo-title');
 
     if (titleInput.value != '') {
@@ -40,11 +44,7 @@ function createTodoButton (mainList) {
             let notes = notesInput.value;
             notesInput.value = '';
             console.log(title);
-        
-        
-        
-        
-            mainList.addTodo(title, dueDate, priority, project, description, notes);
+            todoListObject.addTodo(title, dueDate, priority, project, description, notes, id);
     }
 
 }
