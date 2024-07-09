@@ -12,25 +12,23 @@
     margin: 0;
     box-sizing: border-box;
 }
-header {
-    display: flex;
-    justify-content: center;
-    background-color: var(--sky-4);
-    min-height: 40px;
-}
-header > div {
-    flex: 1;
-    width: clamp(250px, 300px, 350px);
-    font-size: 1.3rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-}
-header > div > button {
-    width: 50%;
-}
-.sidemenu {
+
+.side-menu {
     grid-column: 1/2;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, minmax(200px, 250px));
+}
+.side-menu > div {
+}
+.side-menu > div > button {
+    background-color: var(--sky-1);
+    border: 0;
+    width: 100%;
+
+}
+.side-menu > div > button:hover {
+    background-color: var(--sky-05);
 }
 .main-container {
     display: grid;
