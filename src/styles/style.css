@@ -29,9 +29,12 @@ header > div {
 header > div > button {
     width: 50%;
 }
+.sidemenu {
+    grid-column: 1/2;
+}
 .main-container {
     display: grid;
-    grid-template-columns: 1fr clamp(400px, 55rem, 1000px) 1fr;
+    grid-template-columns: 200px 1fr;
     background-color: var(--sky-2);
     min-height: 2000px;
 }

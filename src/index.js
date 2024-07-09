@@ -28,7 +28,7 @@ todoButton.addEventListener('click', () => {
 });
 
 const homeButton = document.querySelector('#home');
-
+homeButton.addEventListener('click', () => home());
 
 
 //todo List Display
@@ -46,6 +46,13 @@ function displayTodos(list, parent) {
     if (list.length > 0){
         list.forEach((element) => {
             let newRow = document.createElement('tr');
+            let completed = document.createElement('td');
+            let completedCheck = document.createElement('input')
+            completedCheck.type = 'checkbox';
+            completedCheck.value = element.completed;
+            completed.appendChild(completedCheck);
+            newRow.appendChild(completed);
+
             let title = document.createElement('td');
             title.textContent = element.title;
             newRow.appendChild(title);
