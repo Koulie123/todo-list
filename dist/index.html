@@ -18,10 +18,33 @@
             <div class="all-todos" id="all-todos"><button class="all-todos">All Todos</button>
             <button class="create-new-todo">Create New Todo</button>
             </div>
-            <div class="projects"><button class="projects">Projects</button></div>
+            <div class="projects">
+                <button class="projects">Projects</button>
+                <button class="new-project">Create New Project</button>
+            </div>
         </div>
         <div class="center-container">
             <button id="open-todo-dialog">Create New Todo</button>
+            <dialog class="create-new-project">
+                 <form action="" id="new-project">
+                     <div class="title-area">
+                        <h2>New Project</h2>
+                     </div>
+                        <div class="form-body">
+                            <div class="name">
+                                <label for="project-name">Name</label>
+                                <input type="text" name="project-name" id="project-name" class="form-input">
+                            </div>
+                            <div class="description">
+                                <label for="project-description">Description</label>
+                                <textarea name="project-description" id="project-description" class="form-input"></textarea>
+                            </div>
+                            <div class="submit-div">
+                                <button class="submit">Submit</button>
+                            </div>
+                        </div>
+                 </form>
+            </dialog>
             <dialog id="todo-form-dialog">
                 <fieldset>
                     <!-- <form action="#" method="#" id="todo-creation"> -->
@@ -73,7 +96,7 @@
                 <table id="todo-table">
                     <thead class="table-head">
                         <tr>
-                            <th scope="col">Completed?</th>
+                            <th scope="col">Done?</th>
                             <th scope="col">Title</th>
                             <th scope="col">Due-Date</th>
                             <th scope="col">Priority</th>

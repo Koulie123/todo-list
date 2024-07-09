@@ -40,12 +40,6 @@
     grid-column: 2/3;
     background-color: var(--sky-1);
 }
-dialog {
-    position: fixed;
-    top: 50px;
-    width: 400px;
-    left: calc(50% - 200px);
-}
 
 .todos-container {
     grid-column: 2/3;
@@ -116,5 +110,48 @@ table, td, th {
     width: 100%;
     background-color: var(--sky-95);
     color: white;
+}
+
+
+
+
+/* DIALOG BOXES */
+dialog {
+    position: fixed;
+    top: 50px;
+    width: 400px;
+    left: calc(50% - 200px);
+    min-height: 300px;
+}
+
+#new-project {
+    display: grid;
+    grid-template-rows: 2rem 1fr;
+}
+form > div.title-area {
+    grid-row: 1/2;
+}
+.form-body {
+    padding: 4px;
+    margin: 6px;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    grid-template-rows: repeat(auto-fit, auto);
+}
+.form-body > div {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+}
+.form-body > div > .form-input {
+    grid-column: 2/3;
+}
+.form-body > .description {
+    grid-row: 2/3;
+}
+.form-body > .submit-div {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
 }
 

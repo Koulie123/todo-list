@@ -44,6 +44,7 @@ function displayTodos(list, parent) {
     while (parent.firstChild) {
         parent.firstChild.remove();
     }
+    let sortedList = list.sort()
     if (list.length > 0){
         list.forEach((element) => {
             let newRow = document.createElement('tr');
@@ -99,4 +100,15 @@ closeTodoDialog.addEventListener('click', () => {
 })
 sideMenuTodoCreator.addEventListener('click', () => {
     todoDialog.showModal();
+})
+
+
+
+
+// Creating Projects
+const createNewProjectButton = document.querySelector('.new-project');
+const newProjectDialogBox = document.querySelector('.create-new-project');
+
+createNewProjectButton.addEventListener('click', () => {
+    newProjectDialogBox.showModal();
 })
