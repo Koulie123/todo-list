@@ -40,10 +40,13 @@
     grid-column: 2/3;
     background-color: var(--sky-1);
 }
-fieldset {
-    margin: 1rem;
-    padding: 1rem;
+dialog {
+    position: fixed;
+    top: 50px;
+    width: 400px;
+    left: calc(50% - 200px);
 }
+
 .todos-container {
     grid-column: 2/3;
 }
