@@ -2,9 +2,10 @@ import './styles/style.css';
 import Todo from './modules/todo.js';
 import {TodoList, createTodoButton} from './modules/todoList.js';
 import home from './modules/home.js';
-// import displayTodos from './modules/displayTodos.js';
+import project from './modules/project.js';
 
 let mainList = new TodoList();
+
 
 let globalId = 0;
 
