@@ -84,4 +84,19 @@ function displayTodos(list, parent) {
     }
 }
 
+const openTodoDialog = document.querySelector('#open-todo-dialog');
+const sideMenuTodoCreator = document.querySelector('.create-new-todo');
+const closeTodoDialog = document.querySelector('#create-todo');
+if (openTodoDialog == null) console.log("todo dialog is null");
+const todoDialog = document.querySelector('#todo-form-dialog')
 
+
+openTodoDialog.addEventListener('click', () => {
+    todoDialog.showModal();
+})
+closeTodoDialog.addEventListener('click', () => {
+    todoDialog.close();
+})
+sideMenuTodoCreator.addEventListener('click', () => {
+    todoDialog.showModal();
+})
