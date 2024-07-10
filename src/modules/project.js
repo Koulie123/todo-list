@@ -5,5 +5,6 @@ export default class project {
         this.name = name;
         this.description = description;
         this.id = uuidv4();
+        this.associatedTodos = [];
     }
 }

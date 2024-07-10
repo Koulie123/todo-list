@@ -5,6 +5,7 @@ import home from './modules/home.js';
 import project from './modules/project.js';
 
 let mainList = new TodoList();
+let projectList = [];
 
 
 let globalId = 0;
@@ -13,6 +14,7 @@ const centerContainer = document.querySelector('.todos-container');
 const todoButton = document.querySelector('#all-todos');
 const tableBody = document.querySelector('#table-body')
 const submitButton = document.querySelector('#create-todo');
+const projectButton = document.querySelector('#show-projects');
 submitButton.addEventListener('click', () => {
     console.log("todoButton clicked");
     createTodoButton(mainList, globalId);
@@ -108,7 +110,33 @@ sideMenuTodoCreator.addEventListener('click', () => {
 // Creating Projects
 const createNewProjectButton = document.querySelector('.new-project');
 const newProjectDialogBox = document.querySelector('.create-new-project');
+const projectSubmitButton = document.querySelector('#project-submit');
 
 createNewProjectButton.addEventListener('click', () => {
     newProjectDialogBox.showModal();
 })
+function createProjectFromForm() {
+    let projName = document.querySelector('#project-name');
+    let projDesc = document.querySelector('#project-description');
+    if (projName !== null && projDesc !== null) {
+        let newProject = new project(projName.value, projDesc.value);
+        projectList.push(newProject);
+        newProjectDialogBox.close();
+        console.log(projectList);
+    }
+
+
+}
+projectSubmitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    createProjectFromForm();
+})
+projectButton.addEventListener('click', () => {
+    console.log("Project Button");
+})
+
+
+
+
+
+
