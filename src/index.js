@@ -3,6 +3,7 @@ import Todo from './modules/todo.js';
 import {TodoList, createTodoButton} from './modules/todoList.js';
 import home from './modules/home.js';
 import project from './modules/project.js';
+import displayProjectsModule from './modules/displayProjects.js';
 
 let mainList = new TodoList();
 let projectList = [];
@@ -92,20 +93,33 @@ const sideMenuTodoCreator = document.querySelector('.create-new-todo');
 const closeTodoDialog = document.querySelector('#create-todo');
 if (openTodoDialog == null) console.log("todo dialog is null");
 const todoDialog = document.querySelector('#todo-form-dialog')
-
+function displayProjectOptionsDialog() {
+    let todoSelectProject = document.querySelector('#todo-project');
+    todoSelectProject.innerHTML = '';
+    projectList.forEach((project) => {
+        let option = document.createElement('option');
+        option.value = project.id;
+        option.textContent = project.name;
+        todoSelectProject.appendChild(option);
+    })
+}
 
 openTodoDialog.addEventListener('click', () => {
+    displayProjectOptionsDialog();
     todoDialog.showModal();
 })
 closeTodoDialog.addEventListener('click', () => {
     todoDialog.close();
 })
 sideMenuTodoCreator.addEventListener('click', () => {
+    displayProjectOptionsDialog();
+
     todoDialog.showModal();
 })
 
 
-
+//CREATING DEFAULT PROJECTS
+projectList.push(new project('Inbox', 'Default Option'));
 
 // Creating Projects
 const createNewProjectButton = document.querySelector('.new-project');
@@ -121,6 +135,8 @@ function createProjectFromForm() {
     if (projName !== null && projDesc !== null) {
         let newProject = new project(projName.value, projDesc.value);
         projectList.push(newProject);
+        projName.value = '';
+        projDesc.value = '';
         newProjectDialogBox.close();
         console.log(projectList);
     }
@@ -133,10 +149,10 @@ projectSubmitButton.addEventListener('click', (e) => {
 })
 projectButton.addEventListener('click', () => {
     console.log("Project Button");
+    displayProjects();
 })
-
-
-
-
-
-
+const displayProjects = function () {
+    let listToDisplay = projectList;
+    const mainCenterContainer = document.querySelector('.center-container');
+    displayProjectsModule(mainCenterContainer, listToDisplay);
+}
