@@ -11,7 +11,7 @@ let projectList = [];
 
 let globalId = 0;
 
-const centerContainer = document.querySelector('.todos-container');
+const centerContainer = document.querySelector('.table-container');
 const todoButton = document.querySelector('#all-todos');
 const tableBody = document.querySelector('#table-body')
 const submitButton = document.querySelector('#create-todo');
@@ -20,7 +20,7 @@ submitButton.addEventListener('click', () => {
     console.log("todoButton clicked");
     createTodoButton(mainList, globalId);
     console.log(mainList);
-    displayTodos(mainList.getAllTodos(), tableBody);
+    displayTodos(mainList.getAllTodos(), centerContainer);
     globalId ++;
 })
 
@@ -28,25 +28,51 @@ submitButton.addEventListener('click', () => {
 
 todoButton.addEventListener('click', () => {
     console.log("Button clicked");
-    displayTodos(mainList.getAllTodos(), tableBody)
+    displayTodos(mainList.getAllTodos(), centerContainer)
 });
 
 const homeButton = document.querySelector('#home');
-homeButton.addEventListener('click', () => home());
+homeButton.addEventListener('click', () => home(centerContainer));
 
 
 //todo List Display
 function displayTodos(list, parent) {
-    const table = document.querySelector('.todos-container')
+    const table = document.createElement('table');
+    table.id = 'todo-table';
 
-    if (table.classList.contains('no-display')){
-        table.classList.remove('no-display');
-    }
+    
+
     table.classList.remove('no-display');
 
     while (parent.firstChild) {
         parent.firstChild.remove();
     }
+    let thead = document.createElement('thead');
+    let theadRow = document.createElement('tr');
+    let todoDone = document.createElement('th');
+    todoDone.textContent = 'Done?';
+    theadRow.appendChild(todoDone);
+    let todoTitle = document.createElement('th');
+    todoTitle.textContent = 'Title';
+    theadRow.appendChild(todoTitle);
+    let todoDueDate = document.createElement('th');
+    todoDueDate.textContent = 'Due-Date';
+    theadRow.appendChild(todoDueDate);
+    let todoProprity = document.createElement('th');
+    todoProprity.textContent = 'Priority';
+    theadRow.appendChild(todoProprity);
+    let todoProject = document.createElement('th');
+    todoProject.textContent = 'Project';
+    theadRow.appendChild(todoProject);
+    let todoButtons = document.createElement('th');
+    todoButtons.textContent = 'Place For Buttons';
+    theadRow.appendChild(todoButtons);
+
+    thead.appendChild(theadRow);
+    table.appendChild(thead);
+
+
+    let todoTableBody = document.createElement('tbody');
     let sortedList = list.sort()
     if (list.length > 0){
         list.forEach((element) => {
@@ -83,8 +109,10 @@ function displayTodos(list, parent) {
     
     
     
-            parent.appendChild(newRow);
+            todoTableBody.appendChild(newRow);
     });
+    table.appendChild(todoTableBody);
+    parent.appendChild(table);
     }
 }
 
@@ -113,7 +141,6 @@ closeTodoDialog.addEventListener('click', () => {
 })
 sideMenuTodoCreator.addEventListener('click', () => {
     displayProjectOptionsDialog();
-
     todoDialog.showModal();
 })
 
