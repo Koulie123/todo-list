@@ -9,19 +9,18 @@ let mainList = new TodoList();
 let projectList = [];
 
 
-let globalId = 0;
 
-const centerContainer = document.querySelector('.table-container');
+const centerContainer = document.querySelector('.center-container');
 const todoButton = document.querySelector('#all-todos');
 const tableBody = document.querySelector('#table-body')
 const submitButton = document.querySelector('#create-todo');
 const projectButton = document.querySelector('#show-projects');
+
 submitButton.addEventListener('click', () => {
     console.log("todoButton clicked");
-    createTodoButton(mainList, globalId);
+    createTodoButton(mainList);
     console.log(mainList);
     displayTodos(mainList.getAllTodos(), centerContainer);
-    globalId ++;
 })
 
 
@@ -77,6 +76,8 @@ function displayTodos(list, parent) {
     if (list.length > 0){
         list.forEach((element) => {
             let newRow = document.createElement('tr');
+            newRow.classList.add('todo-row');
+
             let completed = document.createElement('td');
             let completedCheck = document.createElement('input')
             completedCheck.type = 'checkbox';
@@ -92,11 +93,6 @@ function displayTodos(list, parent) {
             newRow.appendChild(dueDate);
             let priority = document.createElement('td');
             priority.textContent = element.priority;
-            newRow.appendChild(priority);
-            let project = document.createElement('td');
-            project.textContent = element.project;
-            newRow.appendChild(project);
-            newRow.classList.add('todo-row');
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "Delete";
             console.log(element.id);
@@ -116,12 +112,14 @@ function displayTodos(list, parent) {
     }
 }
 
-const openTodoDialog = document.querySelector('#open-todo-dialog');
-const sideMenuTodoCreator = document.querySelector('.create-new-todo');
+const openTodoDialogButton = document.querySelectorAll('.create-new-todo');
+console.log(openTodoDialogButton);
 const closeTodoDialog = document.querySelector('#create-todo');
-if (openTodoDialog == null) console.log("todo dialog is null");
+if (openTodoDialogButton == null) console.log("todo dialog is null");
 const todoDialog = document.querySelector('#todo-form-dialog')
+
 function displayProjectOptionsDialog() {
+    console.log('line 126 reached');
     let todoSelectProject = document.querySelector('#todo-project');
     todoSelectProject.innerHTML = '';
     projectList.forEach((project) => {
@@ -132,21 +130,21 @@ function displayProjectOptionsDialog() {
     })
 }
 
-openTodoDialog.addEventListener('click', () => {
-    displayProjectOptionsDialog();
-    todoDialog.showModal();
-})
+openTodoDialogButton.forEach((button) => {
+    button.addEventListener('click', () => {
+        todoDialog.showModal();
+        console.log('todo dialog should be open');
+        displayProjectOptionsDialog();
+    });
+});
 closeTodoDialog.addEventListener('click', () => {
     todoDialog.close();
-})
-sideMenuTodoCreator.addEventListener('click', () => {
-    displayProjectOptionsDialog();
-    todoDialog.showModal();
 })
 
 
 //CREATING DEFAULT PROJECTS
 projectList.push(new project('Inbox', 'Default Option'));
+console.log(projectList);
 
 // Creating Projects
 const createNewProjectButton = document.querySelector('.new-project');
