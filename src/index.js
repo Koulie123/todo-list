@@ -75,6 +75,7 @@ function displayTodos(list, parent) {
     let sortedList = list.sort()
     if (list.length > 0){
         list.forEach((element) => {
+            console.log(element);
             let newRow = document.createElement('tr');
             newRow.classList.add('todo-row');
 
@@ -93,6 +94,10 @@ function displayTodos(list, parent) {
             newRow.appendChild(dueDate);
             let priority = document.createElement('td');
             priority.textContent = element.priority;
+            newRow.appendChild(priority);
+            let project = document.createElement('td');
+            project.textContent = element.project.name;
+            newRow.appendChild(project);
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "Delete";
             console.log(element.id);

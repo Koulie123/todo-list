@@ -19,7 +19,7 @@ class TodoList {
     }
 }
 
-function createTodoButton (todoListObject, id) {
+function createTodoButton (todoListObject) {
     let mainList = todoListObject
     let titleInput = document.querySelector('#todo-title');
 
@@ -44,7 +44,8 @@ function createTodoButton (todoListObject, id) {
             let notes = notesInput.value;
             notesInput.value = '';
             console.log(title);
-            todoListObject.addTodo(title, dueDate, priority, project, description, notes, id);
+
+            todoListObject.addTodo(title, dueDate, priority, project, description, notes);
     }
 
 }
