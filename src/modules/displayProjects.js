@@ -21,5 +21,20 @@ export default function (parent, list) {
         thead.appendChild(headRowTwo);
         table.appendChild(thead);
         parent.appendChild(table);
+
+        let tableBody = document.createElement('tbody');
+        if (project.associatedTodos.length > 0){
+            project.associatedTodos.forEach((singleTodo) => {
+                let row = document.createElement('tr');
+                let nameColumn = document.createElement('td');
+                nameColumn.textContent = singleTodo.title;
+                row.appendChild(nameColumn);
+                tableBody.appendChild(row);
+            })
+        }
+        table.appendChild(tableBody);
+
+
+        
     })
 }
