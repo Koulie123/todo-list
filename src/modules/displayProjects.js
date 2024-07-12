@@ -1,8 +1,9 @@
 
 
 export default function (parent, list) {
+    parent.innerHTML = '';
+
     list.forEach((project) => {
-        parent.innerHTML = '';
         let table = document.createElement('table');
         table.classList.add('project-table');
         let thead = document.createElement('thead');

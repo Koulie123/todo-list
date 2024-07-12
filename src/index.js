@@ -119,7 +119,7 @@ function displayTodos(list, parent) {
 
 const openTodoDialogButton = document.querySelectorAll('.create-new-todo');
 console.log(openTodoDialogButton);
-const closeTodoDialog = document.querySelector('#create-todo');
+const createTodoDialogButton = document.querySelector('#create-todo');
 if (openTodoDialogButton == null) console.log("todo dialog is null");
 const todoDialog = document.querySelector('#todo-form-dialog')
 
@@ -138,17 +138,35 @@ function displayProjectOptionsDialog() {
 openTodoDialogButton.forEach((button) => {
     button.addEventListener('click', () => {
         todoDialog.showModal();
+        displayProjectsInTodoOptions();
         console.log('todo dialog should be open');
         displayProjectOptionsDialog();
     });
 });
-closeTodoDialog.addEventListener('click', () => {
+// Display TODO Projects in TODO Dialog
+function displayProjectsInTodoOptions() {
+    let selectBox = document.querySelector('#todo-project');
+    selectBox.innerHTML = '';
+    projectList.forEach((project) => {
+        let option = document.createElement('option');
+        option.value = project.id;
+        option.textContent = project.name;
+    })
+}
+
+createTodoDialogButton.addEventListener('click', () => {
+    todoDialog.close();
+})
+//Cancel Making TODO
+const cancelButton = document.querySelector('#cancel-todo');
+cancelButton.addEventListener('click', () => {
     todoDialog.close();
 })
 
 
 //CREATING DEFAULT PROJECTS
 projectList.push(new project('Inbox', 'Default Option'));
+projectList.push(new project("Test1", "Description1"));
 console.log(projectList);
 
 // Creating Projects
