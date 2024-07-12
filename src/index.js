@@ -1,6 +1,6 @@
 import './styles/style.css';
 import Todo from './modules/todo.js';
-import {TodoList, createTodoButton} from './modules/todoList.js';
+import {TodoList} from './modules/todoList.js';
 import home from './modules/home.js';
 import project from './modules/project.js';
 import displayProjectsModule from './modules/displayProjects.js';
@@ -115,6 +115,45 @@ function displayTodos(list, parent) {
     table.appendChild(todoTableBody);
     parent.appendChild(table);
     }
+}
+
+
+//CREATING TODOS WHEN BUTTON CLICKED
+function createTodoButton (todoListObject) {
+    let mainList = todoListObject
+    let titleInput = document.querySelector('#todo-title');
+
+    if (titleInput.value != '') {
+            let title = titleInput.value;
+            titleInput.value = '';
+            let dueDateInput = document.querySelector('#todo-due-date');
+            let dueDate = dueDateInput.value;
+            dueDateInput.value = '';
+            console.log(dueDate);
+            let priorityInput = document.querySelector('#todo-priority');
+            let priority = priorityInput.value;
+            priorityInput.selectedIndex = 0;
+
+            let projectInput = document.querySelector('#todo-project');
+            let projectId = projectInput.value;
+            projectInput.selectedIndex = 0;
+            console.log("project Selected" + project);
+            let descriptionInput = document.querySelector('#todo-description');
+            let description = descriptionInput.value;
+            descriptionInput = '';
+            let notesInput = document.querySelector('#todo-notes');
+            let notes = notesInput.value;
+            notesInput.value = '';
+            console.log(title);
+            let projectToAddTo = projectList.find((project) => project.id == projectId);
+            let todo = new Todo(title, dueDate, priority, projectId, description, notes);
+            projectToAddTo.associatedTodos.push(todo);
+            console.log(projectList);
+
+            todoListObject.todos.push(todo);
+            // todoListObject.addTodo(title, dueDate, priority, project, description, notes);
+    }
+
 }
 
 const openTodoDialogButton = document.querySelectorAll('.create-new-todo');
