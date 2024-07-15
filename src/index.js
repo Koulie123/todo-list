@@ -9,6 +9,33 @@ let mainList = new TodoList();
 let projectList = [];
 
 
+//TO BE DELETED TEST OF LOCAL STORAGE
+let numberLocalStorage;
+try {
+    console.log('reading from storage');
+    let readFromLocalStorage = localStorage.getItem("numberLocalStorage");
+    numberLocalStorage = JSON.parse(readFromLocalStorage);
+} catch (error) {
+    console.log('error from reading from storage:', error);
+}
+if (!numberLocalStorage){
+    console.log('creating number');
+    numberLocalStorage = {number: 0};
+}
+try {
+    console.log('increasing number');
+    numberLocalStorage.number += 1;
+    localStorage.setItem("numberLocalStorage", JSON.stringify(numberLocalStorage));
+} catch (error) {
+    console.log('Error saving to storage:', error);
+}
+console.log('Current number:', numberLocalStorage.number);
+
+
+
+
+
+
 
 const centerContainer = document.querySelector('.center-container');
 const todoButton = document.querySelector('#all-todos');
@@ -152,7 +179,18 @@ function createTodoButton (todoListObject) {
 
             todoListObject.todos.push(todo);
             // todoListObject.addTodo(title, dueDate, priority, project, description, notes);
+            saveUserTodos(todoListObject);
     }
+
+}
+
+//SAVING THE TODO TO LOCAL STORAGE
+function saveUserTodos(todoListObject){
+    localStorage.setItem("SavedTodos", JSON.stringify(todoListObject.todos));
+    console.log(todoListObject.todos);
+    console.log(JSON.parse(localStorage.getItem("SavedTodos")) + "Are saved");
+    console.log("Save Ran");
+    
 
 }
 
