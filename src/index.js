@@ -6,7 +6,9 @@ import project from './modules/project.js';
 import displayProjectsModule from './modules/displayProjects.js';
 
 let mainList = new TodoList();
+readTodoFromLocalStorage();
 let projectList = [];
+readProjectsFromLocalStorage();
 
 
 
@@ -14,7 +16,6 @@ let projectList = [];
 
 const centerContainer = document.querySelector('.center-container');
 const todoButton = document.querySelector('#all-todos');
-const tableBody = document.querySelector('#table-body')
 const submitButton = document.querySelector('#create-todo');
 const projectButton = document.querySelector('#show-projects');
 
@@ -154,7 +155,6 @@ function createTodoButton (todoListObject) {
 
             todoListObject.todos.push(todo);
             console.log('these are the currently saved todos', mainList.todos);
-            // todoListObject.addTodo(title, dueDate, priority, project, description, notes);
             saveTodoToLocalStorage(mainList);
     }
 
@@ -209,9 +209,11 @@ cancelButton.addEventListener('click', () => {
 
 
 //CREATING DEFAULT PROJECTS
-projectList.push(new project('Inbox', 'Default Option'));
-projectList.push(new project("Test1", "Description1"));
-console.log(projectList);
+if (projectList.length == 0){
+    projectList.push(new project('Inbox', 'Default Option'));
+    console.log(projectList);
+}
+
 
 // Creating Projects
 const createNewProjectButton = document.querySelector('.new-project');
@@ -231,6 +233,7 @@ function createProjectFromForm() {
         projDesc.value = '';
         newProjectDialogBox.close();
         console.log(projectList);
+        saveProjectsToLocalStorage();
     }
 
 
@@ -281,3 +284,26 @@ function readTodoFromLocalStorage(){
 
 // saveTodoToLocalStorage(mainList);
 readTodoFromLocalStorage();
+function saveProjectsToLocalStorage(){
+    try {
+        console.log('saving projects');
+        let projectListToSave = JSON.stringify(projectList);
+        localStorage.setItem("fullListOfProjects", projectListToSave);
+        console.log('saved projects: ', projectListToSave);
+    } catch (error) {
+        error.log('error saving the project list', )
+    }
+
+}
+function readProjectsFromLocalStorage(){
+    try {
+        let projectsReadFromLocalStorage = localStorage.getItem('fullListOfProjects');
+        let parsedProjectList = JSON.parse(projectsReadFromLocalStorage);
+        projectList = [];
+        parsedProjectList.forEach((project) => {
+            projectList.push(project);
+        })
+    } catch (error) {
+        console.log('error reading projects from storage' + error);
+    }
+}
