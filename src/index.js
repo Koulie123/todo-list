@@ -6,61 +6,8 @@ import project from './modules/project.js';
 import displayProjectsModule from './modules/displayProjects.js';
 
 let mainList = new TodoList();
-mainList.addTodo('saving example', 'as', 'as', 'as', 'as', 'as', 'as');
 let projectList = [];
 
-
-//TO BE DELETED TEST OF LOCAL STORAGE
-let numberLocalStorage;
-try {
-    console.log('reading from storage');
-    let readFromLocalStorage = localStorage.getItem("numberLocalStorage");
-    numberLocalStorage = JSON.parse(readFromLocalStorage);
-} catch (error) {
-    console.log('error from reading from storage:', error);
-}
-if (!numberLocalStorage){
-    console.log('creating number');
-    numberLocalStorage = {number: 0};
-}
-try {
-    console.log('increasing number');
-    numberLocalStorage.number += 1;
-    localStorage.setItem("numberLocalStorage", JSON.stringify(numberLocalStorage));
-} catch (error) {
-    console.log('Error saving to storage:', error);
-}
-console.log('Current number:', numberLocalStorage.number);
-
-
-//TESTING SAVING A TODO
-let todoToBeSaved;
-try {
-    console.log("reading from storage");
-    let todoReadFromLocalStorage = localStorage.getItem("todoToBeSaved");
-    let parsedTodoToBeSaved = JSON.parse(todoReadFromLocalStorage);
-    todoToBeSaved = new Todo(
-        parsedTodoToBeSaved.title,
-        parsedTodoToBeSaved.dueDate,
-        parsedTodoToBeSaved.priority,
-        parsedTodoToBeSaved.project,
-        parsedTodoToBeSaved.description,
-        parsedTodoToBeSaved.notes
-    );
-    console.log('Todo read from storage:',  todoToBeSaved);
-} catch (error) {
-    console.log('error from reading from todo storage' + error);
-}
-if (!todoToBeSaved){
-    todoToBeSaved = new Todo('title', 'theDate', 'high', 'none', 'description', 'notes');
-}
-try {
-    console.log('writing to the local Storage');
-    localStorage.setItem("todoToBeSaved" , JSON.stringify(new Todo('title1', 'date2', 'asd', 'asd', 'asd', 'asd')));
-    console.log('wrote to storage');
-} catch (error) {
-    console.log('error writing to save' + error);
-}
 
 
 
@@ -160,6 +107,7 @@ function displayTodos(list, parent) {
             newRow.appendChild(deleteButton);
             deleteButton.addEventListener('click', () => {
                 mainList.todos = mainList.todos.filter((todos) => todos.id !== deleteButton.id);
+                saveTodoToLocalStorage(mainList);
                 displayTodos(mainList.getAllTodos(), parent);
             });
     
@@ -306,7 +254,7 @@ function saveTodoToLocalStorage(todoListObject){
     try {
         let todoListObjectToSave = JSON.stringify(todoListObject);
         localStorage.setItem("fullListOfTodos", todoListObjectToSave);
-        console.log('saved todos');
+        console.log('saved todos: ', todoListObjectToSave);
     } catch (error) {
         console.log('error saving todo list object to local storage' + error);
     }
@@ -331,5 +279,5 @@ function readTodoFromLocalStorage(){
     }
 }
 
-saveTodoToLocalStorage(mainList);
+// saveTodoToLocalStorage(mainList);
 readTodoFromLocalStorage();
