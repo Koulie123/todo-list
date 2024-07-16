@@ -32,7 +32,34 @@ try {
 console.log('Current number:', numberLocalStorage.number);
 
 
-
+//TESTING SAVING A TODO
+let todoToBeSaved;
+try {
+    console.log("reading from storage");
+    let todoReadFromLocalStorage = localStorage.getItem("todoToBeSaved");
+    let parsedTodoToBeSaved = JSON.parse(todoReadFromLocalStorage);
+    todoToBeSaved = new Todo(
+        parsedTodoToBeSaved.title,
+        parsedTodoToBeSaved.dueDate,
+        parsedTodoToBeSaved.priority,
+        parsedTodoToBeSaved.project,
+        parsedTodoToBeSaved.description,
+        parsedTodoToBeSaved.notes
+    );
+    console.log('Todo read from storage:',  todoToBeSaved);
+} catch (error) {
+    console.log('error from reading from todo storage' + error);
+}
+if (!todoToBeSaved){
+    todoToBeSaved = new Todo('title', 'theDate', 'high', 'none', 'description', 'notes');
+}
+try {
+    console.log('writing to the local Storage');
+    localStorage.setItem("todoToBeSaved" , JSON.stringify(new Todo('title1', 'date2', 'asd', 'asd', 'asd', 'asd')));
+    console.log('wrote to storage');
+} catch (error) {
+    console.log('error writing to save' + error);
+}
 
 
 
@@ -281,3 +308,6 @@ const displayProjects = function () {
     const mainCenterContainer = document.querySelector('.center-container');
     displayProjectsModule(mainCenterContainer, listToDisplay);
 }
+
+//SECTION FOR SAVING TO LOCAL STORAGE
+
