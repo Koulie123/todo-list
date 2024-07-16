@@ -2,7 +2,7 @@ import {v4 as uuidv4} from 'uuid';
 
 
 export default class Todo {
-    constructor(title, dueDate, priority,  project, description, notes, id) {
+    constructor(title, dueDate, priority,  project, description, notes) {
         this.title = title;
         this.id = uuidv4();
         this.description = description;

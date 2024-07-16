@@ -6,6 +6,7 @@ import project from './modules/project.js';
 import displayProjectsModule from './modules/displayProjects.js';
 
 let mainList = new TodoList();
+mainList.addTodo('saving example', 'as', 'as', 'as', 'as', 'as', 'as');
 let projectList = [];
 
 
@@ -174,7 +175,6 @@ function displayTodos(list, parent) {
 
 //CREATING TODOS WHEN BUTTON CLICKED
 function createTodoButton (todoListObject) {
-    let mainList = todoListObject
     let titleInput = document.querySelector('#todo-title');
 
     if (titleInput.value != '') {
@@ -205,21 +205,13 @@ function createTodoButton (todoListObject) {
             console.log(projectList);
 
             todoListObject.todos.push(todo);
+            console.log('these are the currently saved todos', mainList.todos);
             // todoListObject.addTodo(title, dueDate, priority, project, description, notes);
-            saveUserTodos(todoListObject);
+            saveTodoToLocalStorage(mainList);
     }
 
 }
 
-//SAVING THE TODO TO LOCAL STORAGE
-function saveUserTodos(todoListObject){
-    localStorage.setItem("SavedTodos", JSON.stringify(todoListObject.todos));
-    console.log(todoListObject.todos);
-    console.log(JSON.parse(localStorage.getItem("SavedTodos")) + "Are saved");
-    console.log("Save Ran");
-    
-
-}
 
 const openTodoDialogButton = document.querySelectorAll('.create-new-todo');
 console.log(openTodoDialogButton);
@@ -310,4 +302,34 @@ const displayProjects = function () {
 }
 
 //SECTION FOR SAVING TO LOCAL STORAGE
+function saveTodoToLocalStorage(todoListObject){
+    try {
+        let todoListObjectToSave = JSON.stringify(todoListObject);
+        localStorage.setItem("fullListOfTodos", todoListObjectToSave);
+        console.log('saved todos');
+    } catch (error) {
+        console.log('error saving todo list object to local storage' + error);
+    }
+}
+function readTodoFromLocalStorage(){
+    try {
+        let todoListObjectReadFromStorage = localStorage.getItem("fullListOfTodos");
+        let readTodoListObject = JSON.parse(todoListObjectReadFromStorage);
+        let readTodoList = readTodoListObject.todos;
+        console.log('readTodoFromLocalStorage', readTodoList);
 
+        console.log('todo list read from storage', todoListObjectReadFromStorage);
+        readTodoList.forEach((todo) => {
+            let todoToPush = new Todo(todo.title, todo.dueDate, todo.priority, todo.project, todo.description, todo.notes);
+            console.log('todo to push', todoToPush);
+            mainList.todos.push(todoToPush);
+
+        })
+        
+    } catch (error) {
+        console.log('error reading the full todo list from the storage' + error);
+    }
+}
+
+saveTodoToLocalStorage(mainList);
+readTodoFromLocalStorage();

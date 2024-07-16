@@ -5,10 +5,10 @@ class TodoList {
     constructor() {
         this.todos = [];
     }
-    addTodo(name, dueDate, priority,  project, description, notes, id) {
-        const newTodo = new Todo(name, dueDate, priority, project, description, notes, id);
+    addTodo(name, dueDate, priority,  project, description, notes) {
+        const newTodo = new Todo(name, dueDate, priority, project, description, notes);
         this.todos.push(newTodo);
-        this.saveUserTodos();
+        // this.saveUserTodos();
 
 
     }
@@ -19,13 +19,7 @@ class TodoList {
     getAllTodos() {
         return this.todos;
     }
-    saveUserTodos(){
-        localStorage.setItem("SavedTodos", JSON.stringify(this.todos));
-        console.log(JSON.parse(localStorage.getItem("SavedTodos")) + "Are saved");
-        Console.log("Save Ran");
-        
 
-    }
 }
 
 
