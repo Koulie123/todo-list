@@ -34,7 +34,7 @@
     display: grid;
     grid-template-columns: 200px 1fr;
     background-color: var(--sky-2);
-    min-height: 2000px;
+    min-height: 1800px;
 }
 .center-container {
     grid-column: 2/3;
@@ -49,6 +49,9 @@
 }
 .form-input-section > span > label {
     width: 8rem;
+}
+input:invalid {
+    border: 2px solid red;
 }
 #todo-creation {
     display: grid;

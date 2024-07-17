@@ -22,9 +22,13 @@ const projectButton = document.querySelector('#show-projects');
 
 submitButton.addEventListener('click', () => {
     console.log("todoButton clicked");
-    createTodoButton(mainList);
-    console.log(mainList);
-    displayTodos(mainList.getAllTodos(), centerContainerTableContainer);
+    if (document.querySelector("#todo-title").value == ""){
+    } else {
+        createTodoButton(mainList);
+        console.log(mainList);
+        displayTodos(mainList.getAllTodos(), centerContainerTableContainer);
+    }
+
 })
 
 
@@ -239,6 +243,9 @@ function createProjectFromForm() {
     let projName = document.querySelector('#project-name');
     let projDesc = document.querySelector('#project-description');
     if (projName !== null && projDesc !== null) {
+        if (projDesc.value == '') {
+            projDesc.value = 'No Description';
+        }
         let newProject = new project(projName.value, projDesc.value);
         projectList.push(newProject);
         projName.value = '';
@@ -247,6 +254,7 @@ function createProjectFromForm() {
         console.log(projectList);
         saveProjectsToLocalStorage();
     }
+    displayProjects();
 
 
 }

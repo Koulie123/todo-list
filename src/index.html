@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-List</title>
+    <link rel="icon" href="data:,">
 </head>
 <body>
     <!-- <header>
@@ -35,12 +36,15 @@
                     <div><strong>To get started:</strong></div>
                     <div>
                         <ul>
-                            <li>Create a new Todo with the button on the side</li>
+                            <li>If you would like to group your todos into projects, you can click on the button to create a project.</li>
+                            <li>Create a new Todo with the button on the side, if you're grouping todos into projects, select the project you would like to add it to from the dropdown menu.</li>
+                            <li>To view all todos grouped by their project, click on the <strong>"All Projects"</strong> button</li>
                         </ul>
                     </div>
                 </div>
-                <div class="table-container">
             </div>
+            <div class="table-container"></div>
+
             </div>
 
         </div>
@@ -65,51 +69,52 @@
             </form>
        </dialog>
        <dialog id="todo-form-dialog">
-           <fieldset>
-                   <div class="form-div" id="todo-creation">
-                       <div class="form-input-section title">
-                           <span>
-                               <label for="todo-title">*Title:</label>
-                               <input type="text" name="title" id="todo-title" required>
-                           </span>
+           <form action="" method="post">
+               <fieldset>
+                       <div class="form-div" id="todo-creation">
+                           <div class="form-input-section title">
+                               <span>
+                                   <label for="todo-title">*Title:</label>
+                                   <input type="text" name="title" id="todo-title" required minlength="1">
+                               </span>
+                           </div>
+                           <div class="form-input-section due-date">
+                               <span>
+                                   <label for="todo-due-date">Due Date: </label>
+                                   <input type="date" name="due-date" id="todo-due-date">
+                               </span>
+                           </div>
+                           <div class="form-input-section priority">
+                               <span>
+                                   <label for="todo-priority">Priority:</label>
+                                   <select name="priority" id="todo-priority">
+                                       <option value="low">Low</option>
+                                       <option value="medium">Medium</option>
+                                       <option value="high">High</option>
+                                   </select>
+                               </span>
+                           </div>
+                           <div class="form-input-section project">
+                               <span>
+                                   <label for="todo-project">Project: </label>
+                                   <select name="project" id="todo-project">
+                                       <option value="Inbox">Inbox</option>
+                                   </select>
+                               </span>
+                           </div>
+                           <div class="form-input-section description">
+                               <label for="todo-description">Description:</label>
+                               <textarea name="description" id="todo-description"></textarea>
+                           </div>
+                           <div class="form-input-section notes">
+                               <label for="todo-notes">Notes:</label>
+                               <textarea name="notes" id="todo-notes"></textarea>
+                           </div>
+                           <button type="submit" id="create-todo">Create Todo</button>
+                           <button id="cancel-todo">Cancel</button>
                        </div>
-                       <div class="form-input-section due-date">
-                           <span>
-                               <label for="todo-due-date">Due Date: </label>
-                               <input type="date" name="due-date" id="todo-due-date">
-                           </span>
-                       </div>
-                       <div class="form-input-section priority">
-                           <span>
-                               <label for="todo-priority">Priority:</label>
-                               <select name="priority" id="todo-priority">
-                                   <option value="low">Low</option>
-                                   <option value="medium">Medium</option>
-                                   <option value="high">High</option>
-                               </select>
-                           </span>
-                       </div>
-                       <div class="form-input-section project">
-                           <span>
-                               <label for="todo-project">Project: </label>
-                               <select name="project" id="todo-project">
-                                   <option value="Inbox">Inbox</option>
-                               </select>
-                           </span>
-                       </div>
-
-                       <div class="form-input-section description">
-                           <label for="todo-description">Description:</label>
-                           <textarea name="description" id="todo-description"></textarea>
-                       </div>
-                       <div class="form-input-section notes">
-                           <label for="todo-notes">Notes:</label>
-                           <textarea name="notes" id="todo-notes"></textarea>
-                       </div>
-                       <button type="submit" id="create-todo">Create Todo</button>
-                       <button id="cancel-todo">Cancel</button>
-                   </div>
-           </fieldset>
+               </fieldset>
+           </form>
        </dialog>
 
     </div>
