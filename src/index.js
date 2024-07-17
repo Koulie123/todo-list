@@ -1,7 +1,7 @@
 import './styles/style.css';
 import Todo from './modules/todo.js';
 import {TodoList} from './modules/todoList.js';
-import home from './modules/home.js';
+import {showHome, hideHome} from './modules/home.js';
 import project from './modules/project.js';
 import displayProjectsModule from './modules/displayProjects.js';
 import getTodayDate from './modules/getTodayDate.js';
@@ -15,7 +15,7 @@ readProjectsFromLocalStorage();
 
 
 
-const centerContainer = document.querySelector('.center-container');
+const centerContainerTableContainer = document.querySelector('.table-container');
 const todoButton = document.querySelector('#all-todos');
 const submitButton = document.querySelector('#create-todo');
 const projectButton = document.querySelector('#show-projects');
@@ -24,22 +24,23 @@ submitButton.addEventListener('click', () => {
     console.log("todoButton clicked");
     createTodoButton(mainList);
     console.log(mainList);
-    displayTodos(mainList.getAllTodos(), centerContainer);
+    displayTodos(mainList.getAllTodos(), centerContainerTableContainer);
 })
 
 
 
 todoButton.addEventListener('click', () => {
     console.log("Button clicked");
-    displayTodos(mainList.getAllTodos(), centerContainer)
+    displayTodos(mainList.getAllTodos(), centerContainerTableContainer)
 });
 
 const homeButton = document.querySelector('#home');
-homeButton.addEventListener('click', () => home(centerContainer));
+homeButton.addEventListener('click', () => showHome(centerContainerTableContainer));
 
 
 //todo List Display
 function displayTodos(list, parent) {
+    hideHome();
     const table = document.createElement('table');
     table.id = 'todo-table';
 
@@ -186,6 +187,8 @@ openTodoDialogButton.forEach((button) => {
         displayProjectsInTodoOptions();
         let selectedProject = document.querySelector('#todo-project');
         selectedProject.selectedIndex = 0;
+        let selectedDate = document.querySelector('#todo-due-date');
+        selectedDate.value = getTodayDate();
         console.log('todo dialog should be open');
         displayProjectOptionsDialog();
     });
@@ -251,8 +254,9 @@ projectButton.addEventListener('click', () => {
 })
 const displayProjects = function () {
     let listToDisplay = projectList;
-    const mainCenterContainer = document.querySelector('.center-container');
-    displayProjectsModule(mainCenterContainer, listToDisplay);
+    hideHome();
+    const maincenterContainerTableContainer = document.querySelector('.table-container');
+    displayProjectsModule(maincenterContainerTableContainer, listToDisplay);
 }
 
 //SECTION FOR SAVING TO LOCAL STORAGE
