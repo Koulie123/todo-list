@@ -19,8 +19,7 @@
     grid-template-columns: 100%;
     grid-template-rows: repeat(3, minmax(200px, 250px));
 }
-.side-menu > div {
-}
+
 .side-menu > div > button {
     background-color: var(--sky-1);
     border: 0;
