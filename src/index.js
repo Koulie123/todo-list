@@ -78,8 +78,8 @@ function displayTodos(list, parent) {
 
     let todoTableBody = document.createElement('tbody');
     let sortedList = list.sort()
-    if (list.length > 0){
-        list.forEach((element) => {
+    if (sortedList.length > 0){
+        sortedList.forEach((element) => {
             console.log(element);
             let newRow = document.createElement('tr');
             newRow.classList.add('todo-row');
@@ -121,6 +121,12 @@ function displayTodos(list, parent) {
     });
     table.appendChild(todoTableBody);
     parent.appendChild(table);
+    }
+    if (list.length == 0){
+        console.log('no data');
+        let noDataDiv = document.createElement('div');
+        noDataDiv.textContent = 'You have no todos';
+        parent.appendChild(noDataDiv);
     }
 }
 

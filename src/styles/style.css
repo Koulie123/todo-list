@@ -168,3 +168,18 @@ form > div.title-area {
     display: flex;
     justify-content: center;
 }
+
+/* HOME PAGE ONLY */
+.home-only-container {
+    display: flex;
+    justify-content: center;
+}
+.home-display-only {
+    margin: 1rem;
+    width: clamp(400px, 50%, 1000px);
+}
+.home-display-only > * {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
