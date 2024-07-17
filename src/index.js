@@ -129,7 +129,7 @@ function displayTodos(list, parent) {
     if (list.length == 0){
         console.log('no data');
         let noDataDiv = document.createElement('div');
-        noDataDiv.textContent = 'You have no todos';
+        noDataDiv.textContent = 'You have no todos yet!';
         parent.appendChild(noDataDiv);
     }
 }
