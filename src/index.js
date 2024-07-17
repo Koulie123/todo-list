@@ -184,11 +184,13 @@ openTodoDialogButton.forEach((button) => {
     button.addEventListener('click', () => {
         todoDialog.showModal();
         displayProjectsInTodoOptions();
+        let selectedProject = document.querySelector('#todo-project');
+        selectedProject.selectedIndex = 0;
         console.log('todo dialog should be open');
         displayProjectOptionsDialog();
     });
 });
-// Display TODO Projects in TODO Dialog
+// Display TODO Projects in TODO Dialog.
 function displayProjectsInTodoOptions() {
     let selectBox = document.querySelector('#todo-project');
     selectBox.innerHTML = '';
