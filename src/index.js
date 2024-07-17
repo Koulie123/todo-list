@@ -4,6 +4,7 @@ import {TodoList} from './modules/todoList.js';
 import home from './modules/home.js';
 import project from './modules/project.js';
 import displayProjectsModule from './modules/displayProjects.js';
+import getTodayDate from './modules/getTodayDate.js';
 
 let mainList = new TodoList();
 readTodoFromLocalStorage();
@@ -99,7 +100,8 @@ function displayTodos(list, parent) {
             priority.textContent = element.priority;
             newRow.appendChild(priority);
             let project = document.createElement('td');
-            project.textContent = element.project.name;
+            let projectName = projectList.find((project) => project.id == element.project)
+            project.textContent = projectName ? projectName.name : "No Project";
             newRow.appendChild(project);
             let deleteButton = document.createElement('button');
             deleteButton.textContent = "Delete";
@@ -131,7 +133,7 @@ function createTodoButton (todoListObject) {
             titleInput.value = '';
             let dueDateInput = document.querySelector('#todo-due-date');
             let dueDate = dueDateInput.value;
-            dueDateInput.value = '';
+            dueDateInput.value = getTodayDate();
             console.log(dueDate);
             let priorityInput = document.querySelector('#todo-priority');
             let priority = priorityInput.value;
@@ -168,7 +170,6 @@ if (openTodoDialogButton == null) console.log("todo dialog is null");
 const todoDialog = document.querySelector('#todo-form-dialog')
 
 function displayProjectOptionsDialog() {
-    console.log('line 126 reached');
     let todoSelectProject = document.querySelector('#todo-project');
     todoSelectProject.innerHTML = '';
     projectList.forEach((project) => {
@@ -283,7 +284,6 @@ function readTodoFromLocalStorage(){
 }
 
 // saveTodoToLocalStorage(mainList);
-readTodoFromLocalStorage();
 function saveProjectsToLocalStorage(){
     try {
         console.log('saving projects');
