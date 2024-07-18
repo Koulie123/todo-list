@@ -95,13 +95,18 @@ input:invalid {
 .no-display {
     display: none;
 }
+/* TABLES */
+
 table {
     width: 100%;
     max-width: 1000px;
     margin: 1rem;
+    border: 3px solid black;
 }
-/* TABLES */
-table, td, th {
+th {
+    border: 2px solid black;
+}
+td{
     border: 1px solid black;
     padding: 0px;
 }
