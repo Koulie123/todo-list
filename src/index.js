@@ -235,6 +235,7 @@ if (projectList.length == 0){
 const createNewProjectButton = document.querySelector('.new-project');
 const newProjectDialogBox = document.querySelector('.create-new-project');
 const projectSubmitButton = document.querySelector('#project-submit');
+const cancelProjectButton = document.querySelector('#project-cancel');
 
 createNewProjectButton.addEventListener('click', () => {
     newProjectDialogBox.showModal();
@@ -266,6 +267,15 @@ projectButton.addEventListener('click', () => {
     console.log("Project Button");
     displayProjects();
 })
+cancelProjectButton.addEventListener('click', () => {
+    let projName = document.querySelector('#project-name');
+    let projDesc = document.querySelector('#project-description');
+    projName.value = '';
+    projDesc.value = '';
+    newProjectDialogBox.close();
+
+})
+
 const displayProjects = function () {
     let listToDisplay = projectList;
     hideHome();
