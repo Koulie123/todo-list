@@ -156,7 +156,7 @@ function createTodoButton (todoListObject) {
             console.log("project Selected" + project);
             let descriptionInput = document.querySelector('#todo-description');
             let description = descriptionInput.value;
-            descriptionInput = '';
+            descriptionInput.value = '';
             let notesInput = document.querySelector('#todo-notes');
             let notes = notesInput.value;
             notesInput.value = '';
