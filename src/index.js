@@ -280,7 +280,13 @@ const displayProjects = function () {
     let listToDisplay = projectList;
     hideHome();
     const maincenterContainerTableContainer = document.querySelector('.table-container');
-    displayProjectsModule(maincenterContainerTableContainer, listToDisplay);
+    const onDelete = (projectId) => {
+        projectList = projectList.filter(project => project.id !== projectId);
+        saveProjectsToLocalStorage();
+        displayProjects();
+    };
+    displayProjectsModule(maincenterContainerTableContainer, listToDisplay, onDelete);
+
 }
 
 //SECTION FOR SAVING TO LOCAL STORAGE
