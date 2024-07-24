@@ -53,7 +53,7 @@
 input:invalid {
     border: 2px solid red;
 }
-#todo-creation {
+.form-body {
     display: grid;
     grid-template-columns: 50% 50%;
     max-width: 100%;
@@ -65,29 +65,35 @@ input:invalid {
     display: grid;
     align-items: center;
 }
-#todo-creation > .title {
+form > fieldset {
+    height: 100%;
+}
+.form-body > div {
+    margin: 0.3rem;
+}
+.form-body > .title {
     grid-column: 1/2;
 
 }
-#todo-creation > .due-date {
+.form-body > .due-date {
     grid-column: 2/3;
 }
-#todo-creation > .priority {
+.form-body > .priority {
     grid-column: 1/2;
 }
-#todo-creation > .description {
+.form-body > .description {
     grid-column: 1/3;
     display: flex;
     justify-content: start;
     align-items: start;
 }
-#todo-creation > .notes {
+.form-body > .notes {
     grid-column: 1/3;
     display: flex;
     justify-content: start;
     align-items: start;
 }
-#todo-creation > button {
+.form-body > button {
     width: 8rem;
 }
 .todos-container {
@@ -134,10 +140,10 @@ dialog {
     min-height: 300px;
 }
 
-#new-project {
+/* #new-project {
     display: grid;
     grid-template-rows: 2rem 1fr;
-}
+} */
 form > div.title-area {
     grid-row: 1/2;
 }
@@ -194,3 +200,13 @@ form > div.title-area {
 }
 
 
+/* PROJECT CREATION DIALOG */
+legend {
+    font-size: 1.4rem;
+}
+.form-body-project > div{
+    margin: 0.5rem;
+}
+.form-body-project > div > span > label {
+    width: 9rem;
+}

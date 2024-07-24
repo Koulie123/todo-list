@@ -50,26 +50,29 @@
 
         </div>
         <dialog class="create-new-project">
-            <form action="#" id="new-project">
-                <div class="title-area">
-                   <h2>New Project</h2>
-                </div>
-                   <div class="form-body">
-                       <div class="name">
-                           <label for="project-name">Name</label>
-                           <input type="text" name="project-name" id="project-name" class="form-input">
-                       </div>
-                       <div class="description">
-                           <label for="project-description">Description</label>
-                           <textarea name="project-description" id="project-description" class="form-input"></textarea>
-                       </div>
-                       <div class="submit-div">
-                           <button class="submit" id="project-submit">Submit</button>
-                       </div>
-                       <div class="cancel-div">
-                        <button id="project-cancel">Cancel</button>
-                       </div>
-                   </div>
+            <form action="" id="new-project">
+                <fieldset>
+                    <legend>New Project</legend>
+                        <div class='form-body-project' id="project-creation">
+                                <div class="project-input-section title">
+                                    <span>
+                                        <label for="project-name">Name</label>
+                                        <input type="text" name="project-name" id="project-name" class="form-input" required minlength="1">
+                                    </span>
+                                </div>
+                                <div class="description project-input-section">
+                                    <span>
+                                        <label for="project-description">Description</label>
+                                        <textarea name="project-description" id="project-description" class="form-input"></textarea>
+                                    </span>
+                                </div>
+                                <div class="submit-div">
+                                    <button class="submit" id="project-submit">Submit</button>
+                                    <button id="project-cancel">Cancel</button>
+                        </div>
+
+                </fieldset>
+
             </form>
        </dialog>
        <dialog id="todo-form-dialog">
